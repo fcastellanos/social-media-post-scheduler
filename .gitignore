@@ -1,5 +1,3 @@
-# Root .gitignore - merged from backend/.gitignore and frontend/.gitignore
-
 ### System / Editor
 .DS_Store
 .vscode/
