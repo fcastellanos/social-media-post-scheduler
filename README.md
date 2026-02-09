@@ -2,7 +2,7 @@
 
 This repository contains two folders: `backend` (Rails API) and `frontend` (Vite + React).
 
-Quick setup
+## Quick setup
 
 1. Start the backend (Rails API)
 
@@ -23,12 +23,20 @@ npm install
 npm run dev
 ```
 
-Notes
+## Notes
 
 - Rails API defaults to `http://localhost:3000`.
 - Vite dev server commonly runs at `http://localhost:5173` — open that URL to view the SPA.
 
-Troubleshooting
+## Troubleshooting
 
 - If `npm install` errors for certain packages, try `npm cache clean --force` and retry, or run `npm install --registry=https://registry.npmjs.org/`.
 - For gems that fail to build, ensure system-level build tools and libraries are installed (e.g. `build-essential`, libxml2, icu, cmake on macOS use Homebrew packages).
+
+## Screenshots
+
+Below are screenshots of the current UI/layout:
+
+![Screenshot 1](docs/images/Screenshot-1.png)
+
+![Screenshot 2](docs/images/Screenshot-2.png)
