@@ -10,4 +10,20 @@ class PostsController < ApplicationController
     
     render json: post, include: ['photos']
   end
+
+  def create
+    post = Post.new(post_params)
+
+    if post.save
+      render json: post, status: :created, include: ['photos']
+    else
+      render json: { errors: post.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def post_params
+    params.require(:post).permit(:title, :content, :scheduled_date, photos_attributes: [:url, :caption])
+  end
 end
