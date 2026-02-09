@@ -1,0 +1,64 @@
+# Root .gitignore - merged from backend/.gitignore and frontend/.gitignore
+
+### System / Editor
+.DS_Store
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+### Node / Frontend
+node_modules/
+dist/
+build/
+.vite/
+dist-ssr
+
+# Lockfiles used by other tools (ignore pnpm lock if you don't use pnpm)
+pnpm-lock.yaml
+
+### Logs / Coverage
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+/coverage/
+
+### Environment
+.env
+.env*
+
+### Rails / Backend
+## Frontend-scoped (explicit)
+frontend/.vite/
+frontend/dist/
+frontend/build/
+frontend/dist-ssr
+
+## Backend-scoped (explicit)
+backend/.bundle
+backend/log/*
+backend/tmp/*
+!backend/log/.keep
+!backend/tmp/.keep
+
+# pidfiles
+backend/tmp/pids/*
+!backend/tmp/pids/
+!backend/tmp/pids/.keep
+
+# storage / uploaded files
+backend/storage/*
+!backend/storage/.keep
+backend/tmp/storage/*
+!backend/tmp/storage/
+!backend/tmp/storage/.keep
+
+# config keys
+backend/config/*.key
