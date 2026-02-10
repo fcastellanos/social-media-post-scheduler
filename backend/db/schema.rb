@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_02_08_202559) do
+ActiveRecord::Schema[8.1].define(version: 2026_02_09_152000) do
   create_table "photos", force: :cascade do |t|
     t.string "caption"
     t.datetime "created_at", null: false
@@ -26,6 +26,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_08_202559) do
     t.datetime "scheduled_date"
     t.string "title"
     t.datetime "updated_at", null: false
+    t.index ["scheduled_date"], name: "index_posts_on_scheduled_date"
   end
 
   add_foreign_key "photos", "posts"
