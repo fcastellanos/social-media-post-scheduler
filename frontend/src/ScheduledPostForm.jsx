@@ -15,6 +15,20 @@ export default function ScheduledPostForm({ onCancel, onCreated }) {
     setLoading(true)
     setError(null)
 
+    // Client-side validation: scheduled date must not be in the past
+    if (scheduledDate) {
+      try {
+        const inputTime = new Date(scheduledDate).getTime()
+        if (!isNaN(inputTime) && inputTime < Date.now()) {
+          setError('Scheduled date cannot be in the past')
+          setLoading(false)
+          return
+        }
+      } catch (e) {
+        // ignore and rely on server validation
+      }
+    }
+
     const payload = {
       post: {
         title,
