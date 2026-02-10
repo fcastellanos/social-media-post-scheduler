@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useParams, Link } from 'react-router-dom'
+import DeleteButton from './DeleteButton'
 
 export default function PostView() {
   const { id } = useParams()
@@ -27,7 +28,10 @@ export default function PostView() {
   return (
     <div className="max-w-2xl mx-auto px-4 py-8">
       <div className="mb-4">
-        <Link to="/" className="text-sm text-gray-600 hover:underline">← Back</Link>
+        <div className="flex items-center justify-between">
+          <Link to="/" className="text-sm text-gray-600 hover:underline">← Back</Link>
+          <DeleteButton postId={post.id} />
+        </div>
       </div>
 
       <article className="bg-white border border-gray-100 rounded-lg shadow-sm p-6">
