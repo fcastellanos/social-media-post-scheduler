@@ -28,6 +28,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_10_193922) do
     t.string "title"
     t.datetime "updated_at", null: false
     t.index ["property_id"], name: "index_posts_on_property_id"
+    t.index ["scheduled_date"], name: "index_posts_on_scheduled_date"
   end
 
   create_table "properties", force: :cascade do |t|
