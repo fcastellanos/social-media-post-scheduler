@@ -4,4 +4,6 @@ class Post < ApplicationRecord
   validates :scheduled_date, presence: true
 
   has_many :photos, dependent: :destroy
+
+  belongs_to :property, optional: true
 end

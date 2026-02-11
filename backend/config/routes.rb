@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   # get "posts/show"
 
   resources :posts, only: [:index, :show]
+
+  resources :properties, only: [:index]
 end

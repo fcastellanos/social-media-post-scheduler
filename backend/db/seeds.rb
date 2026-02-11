@@ -68,3 +68,14 @@ example_posts.each do |attrs|
     end
   end
 end
+
+Property.create!([
+  { name: "Maple Ridge Flats",        address: "1842 W Juniper Crest Ave", city: "Northlake Heights", state: "IL", zip: "60618", latitude: 41.954812, longitude: -87.691443 },
+  { name: "Juniper Court Apartments", address: "1935 W Pine Hollow St",    city: "Northlake Heights", state: "IL", zip: "60618", latitude: 41.951376, longitude: -87.684920 },
+  { name: "The Willowline",           address: "2108 N Cedarbank Blvd",   city: "Northlake Heights", state: "IL", zip: "60618", latitude: 41.958225, longitude: -87.676517 },
+  { name: "Lakeview Terrace Homes",   address: "722 E Ashford Ln",       city: "Northlake Heights", state: "IL", zip: "60618", latitude: 41.946903, longitude: -87.667284 },
+  { name: "Crestwood Lofts",          address: "1601 N Briarstone Rd",   city: "Northlake Heights", state: "IL", zip: "60618", latitude: 41.962488, longitude: -87.661901 },
+  { name: "Harbor Point Residences",  address: "905 W Silverleaf Dr",    city: "Northlake Heights", state: "IL", zip: "60618", latitude: 41.944117, longitude: -87.655632 },
+  { name: "Fulton Grove Apartments",  address: "2480 N Meadowrun Ct",    city: "Northlake Heights", state: "IL", zip: "60618", latitude: 41.969054, longitude: -87.649875 },
+  { name: "The Alderstone",           address: "1317 W Oakrun Ave",      city: "Northlake Heights", state: "IL", zip: "60618", latitude: 41.957041, longitude: -87.647112 }
+])

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_02_08_202559) do
+ActiveRecord::Schema[8.1].define(version: 2026_02_10_193922) do
   create_table "photos", force: :cascade do |t|
     t.string "caption"
     t.datetime "created_at", null: false
@@ -23,10 +23,26 @@ ActiveRecord::Schema[8.1].define(version: 2026_02_08_202559) do
   create_table "posts", force: :cascade do |t|
     t.text "content"
     t.datetime "created_at", null: false
+    t.integer "property_id"
     t.datetime "scheduled_date"
     t.string "title"
     t.datetime "updated_at", null: false
+    t.index ["property_id"], name: "index_posts_on_property_id"
+  end
+
+  create_table "properties", force: :cascade do |t|
+    t.string "address"
+    t.string "city"
+    t.datetime "created_at", null: false
+    t.string "description"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "name"
+    t.string "state"
+    t.datetime "updated_at", null: false
+    t.string "zip"
   end
 
   add_foreign_key "photos", "posts"
+  add_foreign_key "posts", "properties"
 end
