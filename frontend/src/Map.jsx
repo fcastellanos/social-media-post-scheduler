@@ -1,7 +1,7 @@
 import { APIProvider, Map as VisMap, Marker, InfoWindow } from '@vis.gl/react-google-maps'
 import { useState } from 'react'
 
-export default function Map({ center = { lat: 37.7749, lng: -122.4194 }, zoom = 10, markers = [], style = { height: '400px', width: '100%' } }) {
+export default function Map({ center = { lat: 37.7749, lng: -122.4194 }, zoom = 10, markers = [], style = { height: '400px', width: '100%' }, onSelect = null }) {
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY ||  ''
 
   if (!apiKey) {
@@ -49,7 +49,10 @@ export default function Map({ center = { lat: 37.7749, lng: -122.4194 }, zoom = 
                 key={i}
                 position={{ lat: m.lat, lng: m.lng }}
                 title={m.name || ''}
-                onClick={() => setActiveMarker(i)}
+                onClick={() => {
+                  setActiveMarker(i)
+                  if (typeof onSelect === 'function') onSelect(m)
+                }}
               />
             ) : null
           ))}

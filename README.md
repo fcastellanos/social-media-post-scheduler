@@ -40,3 +40,5 @@ Below are screenshots of the current UI/layout:
 ![Screenshot 1](docs/images/Screenshot-1.png)
 
 ![Screenshot 2](docs/images/Screenshot-2.png)
+
+![Screenshot 3](docs/images/Screenshot-3.png)

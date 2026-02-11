@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Map from './Map'
+import Property from './Property'
 
 export default function Properties() {
   const [properties, setProperties] = useState([])
+  const [selectedProperty, setSelectedProperty] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   
@@ -42,8 +44,17 @@ export default function Properties() {
         </div>
       </header>
       <section className="mb-8">
-        <Map markers={properties.map(p => ({ lat: Number(p.latitude), lng: Number(p.longitude), name: p.name, description: p.description }))} />
+        <Map
+          markers={properties.map(p => ({ lat: Number(p.latitude), lng: Number(p.longitude), name: p.name, description: p.description, property: p }))}
+          onSelect={(item) => setSelectedProperty(item && item.property ? item.property : item)}
+        />
       </section>
+
+      {selectedProperty ? (
+        <section className="bg-white rounded shadow p-6 mt-6">
+          <Property property={selectedProperty} />
+        </section>
+      ) : null}
     </div>
   )
 }
