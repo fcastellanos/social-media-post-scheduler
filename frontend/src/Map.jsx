@@ -12,6 +12,11 @@ export default function Map({ center = { lat: 37.7749, lng: -122.4194 }, zoom = 
 
   const [activeMarker, setActiveMarker] = useState(null)
 
+  const truncate = (text, max = 120) => {
+    if (!text) return ''
+    return text.length > max ? `${text.slice(0, max - 1)}…` : text
+  }
+
   // compute initial bounds from markers if present
   let initialBounds = null
   if (markers && markers.length > 0) {
@@ -51,7 +56,14 @@ export default function Map({ center = { lat: 37.7749, lng: -122.4194 }, zoom = 
 
           {activeMarker != null && markers[activeMarker] && (
             <InfoWindow position={{ lat: markers[activeMarker].lat, lng: markers[activeMarker].lng }} onCloseClick={() => setActiveMarker(null)}>
-              <div className="text-sm font-medium">{markers[activeMarker].name}</div>
+              <div className="max-w-xs">
+                <div className="flex items-start justify-between">
+                  <div className="text-sm font-medium mr-3">{markers[activeMarker].name}</div>
+                </div>
+                {markers[activeMarker].description ? (
+                  <div className="text-sm text-gray-600 mt-1">{truncate(markers[activeMarker].description, 120)}</div>
+                ) : null}
+              </div>
             </InfoWindow>
           )}
         </VisMap>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Post from './Post'
 import ScheduledPostForm from './ScheduledPostForm'
@@ -49,7 +50,10 @@ export default function Posts() {
     <div className="max-w-7xl mx-auto px-6 py-10">
       <header className="mb-8 flex items-center justify-between">
         <h1 className="text-3xl font-extrabold text-gray-900">Posts</h1>
-        <div>
+        <div className="flex items-center gap-3">
+          <Link to="/properties" className="inline-flex items-center gap-2 px-3 py-2 bg-gray-100 text-gray-800 rounded">
+            Properties
+          </Link>
           <button onClick={() => setShowForm(true)} className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded">
             New Scheduled Post
           </button>
