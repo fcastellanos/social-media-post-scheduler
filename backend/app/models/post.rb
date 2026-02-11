@@ -5,6 +5,9 @@ class Post < ApplicationRecord
   validate :scheduled_date_cannot_be_in_the_past
 
   has_many :photos, dependent: :destroy
+
+  belongs_to :property, optional: true
+
   accepts_nested_attributes_for :photos
 
   private
