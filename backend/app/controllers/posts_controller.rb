@@ -1,21 +1,21 @@
 class PostsController < ApplicationController
   def index
-    posts = Post.includes(:photos).all
+    posts = Post.includes(:photos, :property).all
 
-    render json: posts, include: ['photos']
+    render json: posts, include: ['photos', 'property']
   end
 
   def show
-    post = Post.includes(:photos).find(params[:id])
+    post = Post.includes(:photos, :property).find(params[:id])
     
-    render json: post, include: ['photos']
+    render json: post, include: ['photos', 'property']
   end
 
   def create
     post = Post.new(post_params)
 
     if post.save
-      render json: post, status: :created, include: ['photos']
+      render json: post, status: :created, include: ['photos', 'property']
     else
       render json: { errors: post.errors.full_messages }, status: :unprocessable_entity
     end

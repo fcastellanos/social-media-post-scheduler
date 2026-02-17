@@ -36,8 +36,16 @@ export default function Post({ post }) {
           <div className="text-sm text-gray-500 mb-2">{scheduledLabel}</div>
         ) : null}
 
-        <h3 className="text-xl font-bold mb-2 leading-tight">
-          <Link to={`/posts/${post.id}`} className="text-gray-900 hover:underline">{title}</Link>
+        <h3 className="text-xl font-bold mb-2 leading-tight flex items-center gap-3">
+          <Link to={`/posts/${post.id}`} className="text-gray-900 hover:underline flex-1">{title}</Link>
+          {post.property_id ? (
+            <span title={post.property.name || 'Linked property'} className="inline-flex items-center gap-2 text-sm text-white bg-green-600 px-2 py-1 rounded">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10 2a6 6 0 00-6 6c0 5 6 10 6 10s6-5 6-10a6 6 0 00-6-6zm0 8a2 2 0 110-4 2 2 0 010 4z" />
+              </svg>
+              <span className="font-medium">Property</span>
+            </span>
+          ) : null}
         </h3>
 
         <p className="text-sm text-gray-600">{excerpt}</p>

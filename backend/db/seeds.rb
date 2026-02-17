@@ -210,6 +210,7 @@ example_posts.each do |attrs|
   post = Post.find_or_create_by(title: attrs[:title]) do |p|
 		p.content = attrs[:content]
 		p.scheduled_date = attrs[:scheduled_date]
+    p.property_id = attrs[:property_id]
 	end
 
   if attrs[:photos_attributes]

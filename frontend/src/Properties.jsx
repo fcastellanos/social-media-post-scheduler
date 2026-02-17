@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import axios from 'axios'
 import Map from './Map'
 import Property from './Property'
@@ -10,6 +10,8 @@ export default function Properties() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   
+  const location = useLocation()
+
   useEffect(() => {
     setLoading(true)
     setError(null)
@@ -17,7 +19,15 @@ export default function Properties() {
     axios
       .get('http://localhost:3000/properties', { withCredentials: true })
       .then((res) => {
-        setProperties(res.data || [])
+        const list = res.data || []
+        setProperties(list)
+
+        const params = new URLSearchParams(location.search)
+        const selected = params.get('selected')
+        if (selected) {
+          const found = list.find((p) => String(p.id) === String(selected))
+          if (found) setSelectedProperty(found)
+        }
       })
       .catch((err) => {
         setError(err.message || 'Request failed')
@@ -45,8 +55,9 @@ export default function Properties() {
       </header>
       <section className="mb-8">
         <Map
-          markers={properties.map(p => ({ lat: Number(p.latitude), lng: Number(p.longitude), name: p.name, description: p.description, property: p }))}
+          markers={properties.map((p) => ({ lat: Number(p.latitude), lng: Number(p.longitude), name: p.name, description: p.description, property: p }))}
           onSelect={(item) => setSelectedProperty(item && item.property ? item.property : item)}
+          initialSelectedId={new URLSearchParams(location.search).get('selected')}
         />
       </section>
 

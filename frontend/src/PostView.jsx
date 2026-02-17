@@ -40,6 +40,22 @@ export default function PostView() {
           <div className="text-sm text-gray-500 mb-4">Scheduled: {new Date(post.scheduled_date).toLocaleString()}</div>
         ) : null}
 
+        {post.property || post.property_id ? (
+          <div className="mb-4 p-4 bg-gray-50 rounded-md border border-gray-100">
+            <div className="flex items-center justify-between">
+              <div>
+                <div className="text-sm font-semibold text-gray-800">{(post.property && post.property.name) || 'Linked Property'}</div>
+                <div className="text-sm text-gray-600">
+                  {post.property ? [post.property.address, post.property.city, post.property.state, post.property.zip].filter(Boolean).join(', ') : null}
+                </div>
+              </div>
+              <div>
+                <Link to={`/properties?selected=${post.property_id || (post.property && post.property.id) || ''}`} className="text-sm text-blue-600 hover:underline">View on map</Link>
+              </div>
+            </div>
+          </div>
+        ) : null}
+
         {post.photos && post.photos.length > 0 && (
           <div className="mb-6">
             {post.photos.map((photo) => (

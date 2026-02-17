@@ -31,9 +31,11 @@ class PropertyDescriptionUpdaterService
   private
 
   def process_property(property)
+    puts "Processing property ##{property.id} - #{property.address}, #{property.city}"
     description = OpenaiPropertyDescriptionService.new(property).generate_description
 
     if description.present?
+      puts "Generated description for property ##{property.id}: #{description.truncate(100)}"
       if property.update(description: description)
         Rails.logger.info("PropertyDescriptionUpdaterService: updated property ##{property.id}")
         1
